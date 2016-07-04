@@ -1,53 +1,7 @@
 var express=require('express');
 var router=express.Router();
-//////////////////////////////////////Db connect///////////
+var movieModel=require('../model/movie');
 
-////////////////////////////schema for check connection///////////////
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test1');
-
- var Cat = mongoose.model('Cat', { name: String });
-
- var kitty = new Cat({ name: 'Zild' });
- kitty.save(function (err) {
-   if (err) {
-     console.log(err);
-   } else {
-     console.log('meow');
-   }
- });
-////////////////////////schema for movie data/////////////////////////
-var Schema=mongoose.Schema;
-
-// var Images = new Schema({
-//     tag: String,
-//     url: String
-// });
-var movieSchema = new Schema({
-  Title: String,
-  Year:String,
-  Rated:String,
-  Released:String,
-  Runtime:String,
-  Genre:String,
-  Director:String,
-  Writer:String,
-  Actors:String,
-  Plot:String,
-  Language:String,
-  Country:String,
-  Awards:String,
-  Images:String,
-  Metascore:String,
-  imdbRating:String,
-  imdbVotes:String,
-  imdbID:String,
-  Type:String,
-  Response:String
-
-});
-var movieModel= mongoose.model('movieModel',movieSchema);
-/////////////////////////////db connect//////////////////////////////
 /////////////////////////insert start///////////////////////////////////////////
 var status='false';
 router.post('/add/Title/:title/Year/:year/Rated/:rated/Response/:response',function(req,res){
@@ -78,7 +32,6 @@ console.log(req.body);
 
 var movie=new movieModel({
     //movie.Title:req.body.Title,
-
     Title:req.body.Title,
     Year:req.body.Year,
     Rated:req.body.Rated,
