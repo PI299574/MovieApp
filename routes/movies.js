@@ -63,7 +63,7 @@ console.log(movie);
     }
 })
   res.send(movie);
-  res.send('movies added successfully');
+//  res.send('movies added successfully');
 });
 
 
